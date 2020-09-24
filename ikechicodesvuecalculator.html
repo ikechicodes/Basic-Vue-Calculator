@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Vue Calculator</title>
+  <style>
+    p, input { font-family: monospace; }
+    p { white-space: pre; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p>x <input v-model="x"></p>
+    <p>y <input v-model="y"></p>
+    
+    <!-- Five Buttons for Operations -->
+    <button v-on:click="add()">+</button>
+    <button v-on:click="subtract()">-</button>
+    <button v-on:click="multiply()">*</button>
+    <button v-on:click="divide()">/</button>
+    <button v-on:click="modulus()">%</button>
+    <p>---------------------</p>
+    <p>= <span v-text="result"></span></p>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script type="text/javascript">
+  function isNotNumericValue(value) {
+    return isNaN(value) || !isFinite(value);
+  }
+    var calc = new Vue({
+      el: '#app',
+      data: { x: 0, y: 0, result: 0 },
+      methods: {
+        add: function() {
+          let x = parseFloat(this.x);
+          if(isNotNumericValue(x))
+          return;
+
+          let y = parseFloat(this.y);
+          if(isNotNumericValue(y))
+          return;
+
+          this.result = x + y;
+        },
+        subtract: function() {
+          let x = parseFloat(this.x);
+          if(isNotNumericValue(x))
+          return;
+
+          let y = parseFloat(this.y);
+          if(isNotNumericValue(y))
+          return;
+
+          this.result = x - y;
+        },
+        multiply: function() {
+          let x = parseFloat(this.x);
+          if(isNotNumericValue(x))
+          return;
+
+          let y = parseFloat(this.y);
+          if(isNotNumericValue(y))
+          return;
+
+          this.result = x * y;
+        },
+        divide: function() {
+          let x = parseFloat(this.x);
+          if(isNotNumericValue(x))
+          return;
+
+          let y = parseFloat(this.y);
+          if(isNotNumericValue(y))
+          return;
+
+          this.result = x / y;
+        },
+        modulus: function() {
+          let x = parseFloat(this.x);
+          if(isNotNumericValue(x))
+          return;
+
+          let y = parseFloat(this.y);
+          if(isNotNumericValue(y))
+          return;
+
+          this.result = x % y;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
